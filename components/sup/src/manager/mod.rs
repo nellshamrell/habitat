@@ -134,8 +134,8 @@ impl Manager {
         }
 
         self.updater.add(&service);
+        service.package.register_metrics();
         self.state.services.write().expect("Services lock is poisoned!").push(service);
-        package.register_metrics();
         Ok(())
     }
 
